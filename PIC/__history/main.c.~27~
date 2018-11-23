@@ -21,40 +21,40 @@ void main()
    lcd_init();
 
    lcd_putc("\fReady...\n");
-   output_low(LED1);
-   output_low(LED2);
 
    while(TRUE)
    {
 
       //Example using external LCD
-      k = getc();      
+      k = getc();
+      printf(LCD_PUTC, "\fValor: %c \n", k);
+      
       switch (k) 
       {
          case 'a':
-            printf(LCD_PUTC, "\fLigar quarto \n");
+            printf(LCD_PUTC, "\fLigar Quarto \n");
             output_high(LED1);         
             break;
          case 'b':
-            printf(LCD_PUTC, "\fDesligar quarto \n");
+            printf(LCD_PUTC, "\fDesligar Quarto \n");
             output_low(LED1);
             break;
          case 'c':
-            printf(LCD_PUTC, "\fLigar sala \n");
+            printf(LCD_PUTC, "\fLigar Sala \n");
             output_high(LED2);
             break;
          case 'd':
-            printf(LCD_PUTC, "\fDesligar sala \n");
+            printf(LCD_PUTC, "\fDesligar Sala \n");
             output_low(LED2);
             break;
          case 'e':
-            printf(LCD_PUTC, "\fLigar tudo \n");
+            printf(LCD_PUTC, "\fLigar Tudo");
             output_high(LED1);
             output_high(LED2);
             break;
          case 'f':
          default:
-            printf(LCD_PUTC, "\fDesligar tudo \n");
+            printf(LCD_PUTC, "\fDesliga os dois: %c \n", k);
             output_low(LED1);
             output_low(LED2);
             break;

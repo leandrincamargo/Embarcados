@@ -1,23 +1,51 @@
 [PROJECT]
 Target=main.hex
 Processor_Text=PIC16F628A
-CCSVerions=5.008
+CCSVerions=5.081d
 Compiler=PCM
 CCSVersion=5.008
 [Target Data]
 FileList=main.c
 [Directories]
-Include=C:\Program Files (x86)\PICC\Devices\;C:\Program Files (x86)\PICC\Drivers\;D:\Nova pasta (2)\
-[D:\Nova pasta (2)\main]
+Include=C:\Program Files (x86)\PICC\Devices\;C:\Program Files (x86)\PICC\Drivers\;D:\GIT\GitHub\Embarcados\PIC\
+[C:\Users\rafae\Documents\PIC\aa\main]
 Type=4
 [mru-list]
 1=main.c
+
+[fileformats]
+forcecoff=0
+
+[ProjectLog]
+Days=2
+D1=21-11-2018
+D1_L=4
+D1_L1=[83444]Project Opened.
+D1_L2=[83461]Started Editing.
+D1_L3=[83761]Stopped Editing.
+D1_L4=[85291]Project Closed.
+D2=22-11-2018
+D2_L=4
+D2_L1=[73359]Project Opened.
+D2_L2=[73680]Started Editing.
+D2_L3=[74137]Stopped Editing.
+TotalEdit=3
+TotalDebug=0
+D2_E=3
+D2_D=0
+D2_L4=[74497]Project Closed.
+
 [Opened Files]
 1=main.c
+t1=2
+Count=1
 2=main.h
 3=
 [main.c]
 Type=4
+
+[defines]
+buildcount=4
 [Units]
 Count=1
 1=main (main)

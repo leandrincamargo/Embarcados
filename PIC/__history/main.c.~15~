@@ -6,6 +6,8 @@
 #define LCD_DATA5 PIN_B5
 #define LCD_DATA6 PIN_B6
 #define LCD_DATA7 PIN_B7
+#define LED1 PIN_A2
+#define LED2 PIN_A3
 
 #include <lcd.c>
 
@@ -24,11 +26,21 @@ void main()
 
       //Example using external LCD
       k = getc();
-      printf(LCD_PUTC, "\fValorRecebido:  %f \n", k);
-
-      //TODO: User Code
-
-      //TODO: User Code
+      printf(LCD_PUTC, "\fValor: %c \n", k);
+      
+      switch (k) 
+      {
+         case 'a':
+            
+            break;
+         case 'b':
+            break;
+         case 'c':
+            break;
+         case 'd':
+            break;
+         
+      }
    }
 
 }

@@ -1,16 +1,17 @@
 004-005 @READ_PROGRAM_MEMORY8.P1
-015     CCP_1
 015     CCP_1_LOW
+015     CCP_1
 016     CCP_1_HIGH
 01F.6   C1OUT
 01F.7   C2OUT
-021     MAIN.dados
+021     MAIN.k
 022     lcd_init.i
+022     @GETCH_1_.@SCRATCH1
 022     MAIN.@SCRATCH1
 023     lcd_putc.c
 023     lcd_init.@SCRATCH1
-024     @delay_ms1.P1
 024     lcd_gotoxy.x
+024     @delay_ms1.P1
 025     lcd_gotoxy.y
 026     lcd_gotoxy.address
 027     lcd_gotoxy.@SCRATCH1
@@ -33,30 +34,36 @@
 ROM Allocation:
 000004  LCD_INIT_STRING.call
 000008  LCD_INIT_STRING.data
-00000C  @const590.call
-00001B  @const592.call
-000025  @delay_ms1
-00003A  lcd_send_nibble
-000067  lcd_read_nibble
-000098  lcd_send_byte
-0000A0  lcd_read_byte
-0000F5  lcd_init
-000130  lcd_gotoxy
-000142  lcd_putc
-00016E  @cinit1
-00016E  MAIN
-00017B  @cinit2
+00000C  @const595.call
+00001B  @const596.call
+00002F  @const597.call
+000046  @const598.call
+000058  @const599.call
+00006D  @const600.call
+00007F  @const601.call
+000094  @delay_ms1
+0000A9  lcd_send_nibble
+0000D6  lcd_read_nibble
+000107  lcd_send_byte
+00010F  lcd_read_byte
+000164  lcd_init
+00019F  lcd_gotoxy
+0001B1  lcd_putc
+0001DD  @GETCH_1_
+000202  MAIN
+000202  @cinit1
+00020B  @cinit2
 
 Project Directory:
-    D:\Nova pasta (2)\
+    D:\GIT\GitHub\Embarcados\PIC\
 
 Project Files:
-    main.c                                                  [20-nov-18 20:47  CRC=9F2FE07F]
-    main.h                                                  [20-nov-18 20:43  CRC=7DFCA5F0]
+    main.c                                                  [23-nov-18 20:36  CRC=3C932BA2]
+    main.h                                                  [23-nov-18 18:38  CRC=00000000]
     C:\Program Files (x86)\PICC\Devices\16F628A.h           [03-jul-13 15:28  CRC=FEBF88CA]
     C:\Program Files (x86)\PICC\Drivers\lcd.c               [23-ago-12 10:01  CRC=D28E8746]
 
-Source signature=C1091DC5
+Source signature=E06FC2F8
 
 Units:
     main (main)

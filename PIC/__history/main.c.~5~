@@ -24,7 +24,7 @@ void main()
 
       //Example using external LCD
       k = getc();
-      printf(LCD_PUTC, "\fValorRecebido:  %f \n", k);
+      printf(LCD_PUTC, "\fValorRecebido:  %s \n", k);
 
       //TODO: User Code
 

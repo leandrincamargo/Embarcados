@@ -24,11 +24,20 @@ void main()
 
       //Example using external LCD
       k = getc();
-      printf(LCD_PUTC, "\fValorRecebido:  %f \n", k);
-
-      //TODO: User Code
-
-      //TODO: User Code
+      printf(LCD_PUTC, "\fValor: %c \n", k);
+      switch (k) 
+      {
+         case 'a':
+            
+            break;
+         case 'b':
+            break;
+         case 'c':
+            break;
+         case 'd':
+            break;
+         
+      }
    }
 
 }

@@ -2,47 +2,27 @@ var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
 var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList;
 var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent;
 
-var phrases = [
-    'olá mundo',
-    'meu nome é rafael',
-    'ligar luz',
-];
-
-var phrasePara = document.querySelector('.phrase');
 var resultPara = document.querySelector('.result');
-var diagnosticPara = document.querySelector('.output');
 
 var testBtn = document.querySelector('button');
 
-function randomPhrase() {
-    var number = Math.floor(Math.random() * phrases.length);
-    return number;
-}
-
 function testSpeech() {
     testBtn.disabled = true;
-    testBtn.textContent = 'Teste em progresso';
+    testBtn.textContent = 'Reconhendo voz';
 
-    var phrase = phrases[randomPhrase()];
     // To ensure case consistency while checking with the returned output text
-    phrase = phrase.toLowerCase();
-    phrasePara.textContent = phrase;
     resultPara.textContent = 'Certo ou Errado?';
     resultPara.style.background = 'rgba(0,0,0,0.2)';
-    diagnosticPara.textContent = '...diagnostico de mensagem';
 
-    var grammar = '#JSGF V1.0; grammar phrase; public <phrase> = ' + phrase +';';
     var recognition = new SpeechRecognition();
     var speechRecognitionList = new SpeechGrammarList();
-    speechRecognitionList.addFromString(grammar, 1);
-    recognition.grammars = speechRecognitionList;
     recognition.lang = 'pt-BR';
     recognition.interimResults = false;
     recognition.maxAlternatives = 1;
 
     recognition.start();
 
-    recognition.onresult = function(event) {
+    recognition.onresult = function (event) {
         // The SpeechRecognitionEvent results property returns a SpeechRecognitionResultList object
         // The SpeechRecognitionResultList object contains SpeechRecognitionResult objects.
         // It has a getter so it can be accessed like an array
@@ -52,56 +32,73 @@ function testSpeech() {
         // The second [0] returns the SpeechRecognitionAlternative at position 0.
         // We then return the transcript property of the SpeechRecognitionAlternative object
         var speechResult = event.results[0][0].transcript.toLowerCase();
-        diagnosticPara.textContent = 'Speech recebeu: ' + speechResult + '.';
-        if(speechResult === phrase) {
-            resultPara.textContent = 'Eu escutei a frase correta!';
-            resultPara.style.background = 'lime';
-        } else {
-            resultPara.textContent = 'a frase nao esta certa';
-            resultPara.style.background = 'red';
+        resultPara.textContent = speechResult;
+        resultPara.style.background = 'lime';
+        var saida = 'f';
+        switch (speechResult) {
+            case "ligar quarto":
+                saida = 'a'
+                break;
+            case "desligar quarto":
+                saida = 'b'
+                break;
+            case "ligar sala":
+                saida = 'c'
+                break;
+            case "desligar sala":
+                saida = 'd'
+                break;
+            case "ligar tudo":
+                saida = 'e'
+                break;
+            case "desligar tudo":
+            default:
+                saida = 'f'
+                break;
         }
-
-        console.log('Confidence: ' + event.results[0][0].confidence);
+        $.post(`/`, {
+            nome: saida
+        })
     }
 
-    recognition.onspeechend = function() {
+    recognition.onspeechend = function () {
         recognition.stop();
         testBtn.disabled = false;
-        testBtn.textContent = 'Novo teste';
+        testBtn.textContent = 'Falar';
     }
 
-    recognition.onerror = function(event) {
+    recognition.onerror = function (event) {
         testBtn.disabled = false;
-        testBtn.textContent = 'Novo teste';
-        diagnosticPara.textContent = 'Error occurred in recognition: ' + event.error;
+        testBtn.textContent = 'Falar';
+        resultPara.textContent = 'Error occurred in recognition: ' + event.error;
     }
 
-    recognition.onaudiostart = function(event) {
+    recognition.onaudiostart = function (event) {
         //Fired when the user agent has started to capture audio.
         console.log('SpeechRecognition.onaudiostart');
     }
 
-    recognition.onaudioend = function(event) {
+    recognition.onaudioend = function (event) {
         //Fired when the user agent has finished capturing audio.
         console.log('SpeechRecognition.onaudioend');
     }
 
-    recognition.onend = function(event) {
+    recognition.onend = function (event) {
         //Fired when the speech recognition service has disconnected.
         console.log('SpeechRecognition.onend');
     }
 
-    recognition.onnomatch = function(event) {
+    recognition.onnomatch = function (event) {
         //Fired when the speech recognition service returns a final result with no significant recognition. This may involve some degree of recognition, which doesn't meet or exceed the confidence threshold.
         console.log('SpeechRecognition.onnomatch');
     }
 
-    recognition.onsoundstart = function(event) {
+    recognition.onsoundstart = function (event) {
         //Fired when any sound — recognisable speech or not — has been detected.
         console.log('SpeechRecognition.onsoundstart');
     }
 
-    recognition.onsoundend = function(event) {
+    recognition.onsoundend = function (event) {
         //Fired when any sound — recognisable speech or not — has stopped being detected.
         console.log('SpeechRecognition.onsoundend');
     }
@@ -110,7 +107,7 @@ function testSpeech() {
         //Fired when sound that is recognised by the speech recognition service as speech has been detected.
         console.log('SpeechRecognition.onspeechstart');
     }
-    recognition.onstart = function(event) {
+    recognition.onstart = function (event) {
         //Fired when the speech recognition service has begun listening to incoming audio with intent to recognize grammars associated with the current SpeechRecognition.
         console.log('SpeechRecognition.onstart');
     }

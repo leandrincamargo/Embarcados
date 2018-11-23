@@ -17,15 +17,20 @@ void main()
 
    lcd_init();
 
-   lcd_putc("\fReady...\n");
+   printf(LCD_PUTC, "\f\fReady...\n");
 
    while(TRUE)
    {
-
+      while(!rcif);
+      {
+         getc(string);
+         delay_us(100);            
+      }
+      
       //Example using external LCD
       k = getc();
-      printf(LCD_PUTC, "\fValorRecebido:  %f \n", k);
-
+      printf(LCD_PUTC, "\fValorRecebido:  %c \n", k);
+      
       //TODO: User Code
 
       //TODO: User Code
