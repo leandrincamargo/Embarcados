@@ -9,11 +9,17 @@ Comandar o controlador PIC por comandos de voz, via web
 ## Hardwares Utilizadas
 
 1 PIC16F628A
+
 1 LCD 2x16
+
 1 Cristal 12 MHz
+
 2 Capacitores 33 pF
+
 1 Módulo Rele
+
 1 LED vermelho
+
 1 Gravador de PIC
 
 ## Ferramentas Utilizadas
