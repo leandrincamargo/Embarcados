@@ -35,6 +35,5 @@ Comandar o controlador PIC por comandos de voz, via web
 ## Licença
 * Proprietária
 
-## Contato
-* Email: [leandrocamaargo@hotmail.com](mailto:leandrocamaargo@hotmail.com)
+## Contato)
 * Linkedin: [Leandro Camargo da Veiga](https://br.linkedin.com/in/leandro-camargo-da-veiga-7b135810b)
